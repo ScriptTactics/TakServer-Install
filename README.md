@@ -166,5 +166,67 @@ The output should look like this
 8089/tcp 8443/tcp
 ```
 
+# Web UI
 
+In order to access the webUI you will need to download the admin certificate that you created in the previous step.
+
+You can do this a number of ways.
+
+1. SFTP
+2. SCP
+3. FileZilla 
+
+
+Choose whichever is best for you. 
+The file you are looking for is here:
+
+`/opt/tak/certs/files/admin.p12`
+
+&
+
+`/opt/tak/certs/files/admin.pem`
+
+Once you have this cert you will have to import it in your browser.
+
+Firefox:
+Settings -> Preferences -> Privacy & Security -> Certificates -> View Certificates
+
+Select `Your Certificates` and import the downloaded cert. 
+
+The password is `atakatak`
+
+Then navigate to:
+
+`https://yourip:8443/`
+
+
+## (Optional) Create Admin Credentials
+
+Create Login Credentials for local admin account:
+```
+sudo java -jar /opt/tak/utils/UserManager.jar usermod -A -p <password> <username>
+```
+
+
+# Setup Wizard
+
+Secure: https://yourip:8443/setup/
+
+Insecure with user/pass: http://yourip:8080/setup
+
+
+# Other Configurations
+
+After running through the wizard you may want to disable port 8080.
+
+`sudo nano /opt/tak/CoreConfig.xml`
+
+then remove
+```
+<connector port="8080" tls="false" _name="http_plaintext"/>
+```
+
+save the changes and restart tak server.
+
+`sudo systemctl restart takserver`
 
