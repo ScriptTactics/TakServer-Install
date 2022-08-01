@@ -149,4 +149,22 @@ Also, the generated CA trustores and certs will be here:
 
 
 
+# Firewall
+Setup the following firewall rules:
+```
+sudo firewall-cmd --permanent --zone=public --add-port 8089/tcp
+sudo firewall-cmd --permanent --zone=public --add-port 8443/tcp
+sudo firewall-cmd --reload
+```
+
+After reloading the firewall check that the ports are opened by running:
+
+`sudo firewall-cmd --list-ports`
+
+The output should look like this
+```
+8089/tcp 8443/tcp
+```
+
+
 
