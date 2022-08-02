@@ -12,11 +12,16 @@ Be sure to create an admin password and make the user you create an admin.
 # TAKServer
 Once your CentOS server is setup update the packages.
 
-`sudo yum update && sudo yum upgrade -y`
+`sudo yum update -y && sudo yum upgrade -y`
+
+Then install 
+
+`sudo yum install epel-release -y`
+
 
 Make sure git is installed
 
-`sudo yum install git`
+`sudo yum install git -y`
 
 then clone the TakServer repo
 
@@ -24,14 +29,14 @@ then clone the TakServer repo
 
 You will also need to make sure Java 11 is installed. (JDK & JRE)
 
-`sudo yum install java-11-openjdk-devel`
+`sudo yum install java-11-openjdk-devel -y`
 
 `sudo yum install java-11-openjdk`
 
 
 You will also need to install patch
 
-`sudo yum install patch`
+`sudo yum install patch -y`
 
 As well as Postgres
 
@@ -45,7 +50,7 @@ Once those are installed you can build the project.
 Navigate into the src directory and clean and build the project
 
 ```
-cd src
+cd Server/src
 ./gradlew clean bootWar
 ```
 
@@ -77,7 +82,7 @@ Run `sudo yum install takserver-4.5-RELEASE72.noarch.rpm` to install the server.
 
 There is a db install script pre-made that you will have to run.
 
-`sudo /opt/tak/db-utils/takserver-setup-db.sh`
+`sudo ./opt/tak/db-utils/takserver-setup-db.sh`
 
 
 ## Reload Service
@@ -88,7 +93,7 @@ After the db setup script is complete you can reload the services
 
 At this point you can set TAK Server to start at boot
 
-`sudo systemctl enable takeserver`
+`sudo systemctl enable takserver`
 
 
 # Certificates
@@ -181,10 +186,6 @@ Choose whichever is best for you.
 The file you are looking for is here:
 
 `/opt/tak/certs/files/admin.p12`
-
-&
-
-`/opt/tak/certs/files/admin.pem`
 
 Once you have this cert you will have to import it in your browser.
 
