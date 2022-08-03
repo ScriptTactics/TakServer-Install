@@ -31,8 +31,6 @@ You will also need to make sure Java 11 is installed. (JDK & JRE)
 
 `sudo yum install java-11-openjdk-devel -y`
 
-`sudo yum install java-11-openjdk`
-
 
 You will also need to install patch
 
@@ -102,7 +100,7 @@ First you will have to become the `tak` user that is created.
 
 `sudo su tak`
 
-Then create env variables for the following:
+Then create env variables:
 ```
 export STATE=NY
 export CITY=NYC
@@ -111,13 +109,12 @@ export ORGANIZATIONAL_UNIT=my-unit
 ```
 
 Navigate to 
-`/opt/tak/certs/cert-metadata.sh`
+`/opt/tak/certs/`
 
 Then run 
 `./makeRootCa.sh`
 
 Give a name for your CA: example-name
-
 
 Create a server certificate:
 
@@ -126,7 +123,7 @@ Create a server certificate:
 
 ## Client Certs
 
-For each client that you want on your network copy the following command and change the user.
+For each client that you want on your network copy the following command and change `user` to the user you want to add: ex -> `Alpha`.
 
 `./makeCert.sh client user`
 
